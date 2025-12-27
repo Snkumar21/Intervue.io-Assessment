@@ -9,7 +9,7 @@ const Student = () => {
     const handleContinue = () => {
         if (!name.trim()) return;
         localStorage.setItem("studentName", name);
-        navigate("/student-question");
+        navigate("/student/wait");
     };
 
     return (
