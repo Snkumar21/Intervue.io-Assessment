@@ -1,29 +1,21 @@
+import { useNavigate } from "react-router-dom";
+
 const Teacher = () => {
+    const navigate = useNavigate();
+
     return (
         <div className="page">
-            <div className="card">
-                <h3 className="title">Ask a Question</h3>
+            <h2>Create Poll</h2>
 
-                <label>Question</label>
-                <input type="text" placeholder="Type your question here" />
+            <input placeholder="Enter your question" />
+            <input placeholder="Option 1" />
+            <input placeholder="Option 2" />
+            <input placeholder="Option 3" />
+            <input placeholder="Option 4" />
 
-                <label>Options</label>
-                <input type="text" placeholder="Option 1" />
-                <input type="text" placeholder="Option 2" />
-                <input type="text" placeholder="Option 3" />
-                <input type="text" placeholder="Option 4" />
-
-                <label>Time Limit</label>
-                <select>
-                    <option>60 seconds</option>
-                    <option>45 seconds</option>
-                    <option>30 seconds</option>
-                </select>
-
-                <button className="primary-btn">
-                    Ask Question
-                </button>
-            </div>
+            <button onClick={() => navigate("/teacher/result")}>
+                Publish Poll
+            </button>
         </div>
     );
 };
