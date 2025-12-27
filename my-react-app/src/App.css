@@ -89,3 +89,25 @@
   border: none;
   cursor: pointer;
 }
+
+/* Student Styling */
+.student-container,
+.poll-card {
+  max-width: 420px;
+  margin: auto;
+  padding: 30px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.option {
+  display: block;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+  margin-top: 100px;
+}
