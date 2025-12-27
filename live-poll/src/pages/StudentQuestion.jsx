@@ -1,58 +1,46 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "../style/StudentPoll.css";
+
+const options = ["Mars", "Venus", "Jupiter", "Saturn"];
 
 const StudentQuestion = () => {
-    const navigate = useNavigate();
-    const [timeLeft, setTimeLeft] = useState(45);
-    const [selected, setSelected] = useState("");
-
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft((t) => {
-                if (t === 1) {
-                    clearInterval(timer);
-                    navigate("/student-result");
-                }
-                return t - 1;
-            });
-        }, 1000);
-
-        return () => clearInterval(timer);
-    }, [navigate]);
-
-    const handleSubmit = () => {
-        navigate("/student-result");
-    };
+    const [selected, setSelected] = useState(null);
 
     return (
-        <div className="page">
-            <div className="card">
-                <h3 className="title">
-                    Which JS framework do you like the most?
-                </h3>
+        <div className="poll-page">
+            <span className="badge">✨ Intervue Poll</span>
 
-                <div className="timer">⏱ {timeLeft}s</div>
+            <div className="poll-card">
+                <div className="poll-header">
+                    <span>Question 1</span>
+                    <span className="timer">⏱ 00:15</span>
+                </div>
 
-                {["React", "Vue", "Angular"].map((opt) => (
-                    <label key={opt} className="option">
-                        <input
-                            type="radio"
-                            name="option"
-                            onChange={() => setSelected(opt)}
-                        />
-                        {opt}
-                    </label>
-                ))}
+                <div className="question">
+                    Which planet is known as the Red Planet?
+                </div>
 
-                <button
-                    className="primary-btn"
-                    disabled={!selected}
-                    onClick={handleSubmit}
-                >
-                    Submit
-                </button>
+                <div className="options">
+                    {options.map((opt, i) => (
+                        <div
+                            key={opt}
+                            className={`option ${selected === i ? "selected" : ""}`}
+                            onClick={() => setSelected(i)}
+                        >
+                            <span className="circle">{i + 1}</span>
+                            {opt}
+                        </div>
+                    ))}
+                </div>
             </div>
+
+            <button className="submit-btn" disabled={selected === null}>
+                Submit
+            </button>
+
+            <div className="chat-fab">💬</div>
         </div>
     );
 };
+
 export default StudentQuestion;
