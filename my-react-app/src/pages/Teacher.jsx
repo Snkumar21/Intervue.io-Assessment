@@ -20,6 +20,14 @@ const Teacher = () => {
         };
     }, [socket]);
 
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/poll/active`)
+        .then(res => res.json())
+        .then(data => {
+            if (data) setPoll(data);
+        });
+    }, []);
+
     const createPoll = () => {
         socket.emit("teacher:createPoll", {
             question: "Which JS framework do you like most?",

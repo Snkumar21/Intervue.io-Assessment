@@ -35,6 +35,12 @@ class PollService {
             { new: true }
         );
     }
+
+    async getPollHistory() {
+        return await Poll.find({ isActive: false })
+        .sort({ createdAt: -1 })
+        .limit(10);
+    }
 }
 
 module.exports = new PollService();

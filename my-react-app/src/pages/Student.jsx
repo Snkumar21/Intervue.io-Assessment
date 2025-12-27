@@ -24,6 +24,14 @@ const Student = () => {
         setStudentId(id);
     }, []);
 
+    useEffect(() => {
+        fetch(`${import.meta.env.VITE_BACKEND_URL}/poll/active`)
+            .then(res => res.json())
+            .then(data => {
+                if (data) setPoll(data);
+            });
+    }, []);
+
     // Socket listeners
     useEffect(() => {
         if (!socket) return;
