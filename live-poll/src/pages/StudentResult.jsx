@@ -1,10 +1,10 @@
 const StudentResult = () => {
+    const name = localStorage.getItem("studentName");
+
     return (
         <div className="page">
             <div className="card">
-                <h3 className="title">
-                    Poll Results
-                </h3>
+                <h3 className="title">Thanks {name} 👋</h3>
 
                 <p className="question">
                     Which JS framework do you like the most?
